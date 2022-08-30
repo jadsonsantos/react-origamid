@@ -1,0 +1,14 @@
+.products {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.button {
+  border: none;
+  padding: 30px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
