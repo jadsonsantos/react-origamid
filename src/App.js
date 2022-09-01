@@ -1,8 +1,38 @@
+// Os links abaixo puxam dados de um produto em formato JSON
+// https://ranekapi.origamid.dev/json/api/produto/tablet
+// https://ranekapi.origamid.dev/json/api/produto/smartphone
+// https://ranekapi.origamid.dev/json/api/produto/notebook
+// Crie uma interface com 3 botões, um para cada produto.
+// Ao clicar no botão faça um fetch a api e mostre os dados do produto na tela.
+// Mostre apenas um produto por vez
+// Mostre a mensagem carregando... enquanto o fetch é realizado
+
 import logo from './logo.svg';
 import './App.css';
 import Products from './components/Products';
+import {useState} from "react"
 
 function App() {
+
+  const [isLoading, setIsLoading] = useState(true)
+  const [data, setData] = useState(null)
+
+  const fetchProducts = async(url) => {
+    try {
+      const product = await fetch(url)
+      const productJson = await product.json()
+      setData(productJson)
+      console.log(productJson);
+      setIsLoading(false)
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const handleClick = () => {
+    fetchProducts("https://ranekapi.origamid.dev/json/api/produto/tablet")
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -19,7 +49,10 @@ function App() {
           Learn React
         </a>
       </header>
-      <Products />
+      <button className="button" onClick={() => handleClick()}>smartphone</button>
+      <button className="button" onClick={() => handleClick()}>tablet</button>
+      <button className="button" onClick={() => handleClick()}>notebook</button>
+      {data && <Products data={data} isLoading={isLoading} />}
     </div>
   );
 }
