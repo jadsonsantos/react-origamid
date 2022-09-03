@@ -8,10 +8,9 @@ const Products = ({data, isLoading}) => {
 
   const Product = () => (
     <div>
-      {data.nome}
-      <br/>
-      <p>{data.descricao}</p>
+      <p>{data.nome}</p>
       <p>{data.preco}</p>
+      <img src={data.fotos[0].src} alt={data.fotos[0].titulo} />
     </div>
   )
 
