@@ -22,8 +22,8 @@ function App() {
       const product = await fetch(url)
       const productJson = await product.json()
       setData(productJson)
-      console.log(productJson);
       setIsLoading(false)
+      console.log(productJson);
     } catch (err) {
       console.log(err);
     }
@@ -52,7 +52,8 @@ function App() {
       <button className="button" onClick={() => handleClick()}>smartphone</button>
       <button className="button" onClick={() => handleClick()}>tablet</button>
       <button className="button" onClick={() => handleClick()}>notebook</button>
-      {data && <Products data={data} isLoading={isLoading} />}
+      {isLoading && <p>Carregando</p>}
+      {!isLoading && data && <Products data={data} isLoading={isLoading} />}
     </div>
   );
 }
