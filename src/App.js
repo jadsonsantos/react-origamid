@@ -11,6 +11,7 @@ import logo from './logo.svg';
 import './App.css';
 import Products from './components/Products';
 import {useState} from "react"
+import UseRef from './aulas/0303-useref';
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
 
   return (
     <div className="App">
+      <UseRef />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
